@@ -22,6 +22,4 @@ Welcome to my personal portfolio website! I'm Sathvik Polisetty, a passionate B.
 - **Phone**: [+91 6281254968](tel:+916281254968)
 - **LinkedIn**: [Sathvik Polisetty](https://www.linkedin.com/in/sathvik-polisetty-6a7101357/)
 - **GitHub**: [Sathvik257](https://github.com/Sathvik257)
-
-## 📁 Folder Structure
-
+- 
