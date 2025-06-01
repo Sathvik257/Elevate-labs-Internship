@@ -29,12 +29,6 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 ├── style.css # All styles and animations
 └── README.md # Project documentation
 
-
-## 📷 Preview
-
-![Website Preview](.png)  
-> Replace this with an actual screenshot of your website.
-
 ## ✍️ Made By
 
 **Sathvik Polisetty**  
