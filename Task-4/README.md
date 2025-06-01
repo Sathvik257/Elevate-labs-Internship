@@ -32,7 +32,7 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 
 ## 📷 Preview
 
-![Website Preview](screenshot.png)  
+![Website Preview](.png)  
 > Replace this with an actual screenshot of your website.
 
 ## ✍️ Made By
