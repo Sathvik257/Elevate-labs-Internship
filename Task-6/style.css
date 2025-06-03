@@ -1,0 +1,325 @@
+/* CSS Variables for theming */
+:root {
+  --color-primary: #8e44ad;
+  --color-primary-light: #a56acf;
+  --color-primary-dark: #722f9e;
+  --color-error: #e74c3c;
+  --color-success: #27ae60;
+  --font-family: 'Poppins', sans-serif;
+  --transition-speed: 0.35s;
+  --input-padding: 1.25rem 1rem 1.25rem 1rem;
+  --input-height: 48px;
+}
+
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Reset and basics */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2c003e, #8e44ad);
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 2rem;
+  color: #eee;
+  user-select: none;
+}
+
+/* Blob background with morphing animation with clip-path */
+.blob-bg {
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, #a56acf, #722f9e);
+  filter: drop-shadow(0 0 8px rgba(165, 106, 207, 0.6));
+  border-radius: 45% 55% 65% 35% / 60% 45% 55% 40%;
+  animation: blobMorph 12s infinite ease-in-out;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+@keyframes blobMorph {
+  0%, 100% {
+    border-radius: 45% 55% 65% 35% / 60% 45% 55% 40%;
+  }
+  50% {
+    border-radius: 65% 35% 45% 55% / 50% 60% 40% 55%;
+  }
+}
+
+/* Form container styling with glassmorphism */
+.form-container {
+  position: relative;
+  background: rgba(255 255 255 / 0.12);
+  box-shadow:
+    0 4px 30px rgba(146, 61, 223, 0.3);
+  border-radius: 32px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 3rem 3.5rem 3.5rem;
+  width: 100%;
+  max-width: 480px;
+  color: #eee;
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title */
+h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.9rem;
+  text-align: center;
+  text-shadow: 0 3px 8px rgba(146, 61, 223, 0.6);
+  user-select: none;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Floating label container */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+/* Inputs and Textarea base styles */
+input, textarea {
+  background: transparent;
+  border: 2.5px solid rgba(255 255 255 / 0.4);
+  border-radius: 18px;
+  outline: none;
+  font-size: 1.1rem;
+  color: #f0f0f0;
+  width: 100%;
+  padding: var(--input-padding);
+  font-family: var(--font-family);
+  min-height: var(--input-height);
+  transition:
+    border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+  resize: vertical;
+  box-shadow: inset 0 0 3px rgba(255 255 255 / 0.1);
+  caret-color: var(--color-primary-light);
+}
+
+textarea {
+  min-height: 100px;
+  padding-top: 1.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+  resize: vertical;
+}
+
+/* Input focus effect */
+input:focus, textarea:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 10px var(--color-primary-light);
+  background: rgba(165 106 207 / 0.15);
+}
+
+/* Input hover highlight */
+input:hover:not(:focus),
+textarea:hover:not(:focus) {
+  border-color: rgba(255 255 255 / 0.6);
+}
+
+/* Hide native placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: transparent;
+  transition: color 0.25s ease;
+}
+
+/* Floating label */
+label {
+  position: absolute;
+  left: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255 255 255 / 0.6);
+  font-weight: 600;
+  pointer-events: none;
+  user-select: none;
+  font-size: 1.1rem;
+  transition:
+    top 0.3s ease,
+    font-size 0.3s ease,
+    color 0.3s ease;
+  background-color: transparent;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+}
+
+/* Label moves up on focus or input content */
+input:focus + label,
+textarea:focus + label,
+input:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+  top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--color-primary-light);
+  user-select: none;
+}
+
+/* Error messages */
+.error-message {
+  color: var(--color-error);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  user-select: none;
+}
+
+.error-message.active {
+  opacity: 1;
+  max-height: 100px;
+}
+
+/* Success message container */
+.success-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: var(--color-success);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s cubic-bezier(0.25,0.8,0.25,1), transform 0.5s ease;
+  user-select: none;
+}
+
+.success-message.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Checkmark SVG icon style */
+.success-message svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--color-success);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  animation: checkmarkDraw 0.45s ease forwards;
+}
+
+@keyframes checkmarkDraw {
+  0% {
+    stroke-dashoffset: 25;
+    stroke-dasharray: 25;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 25;
+  }
+}
+
+/* Submit button */
+button {
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+  color: #fafafa;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 32px;
+  padding: 1.18rem 0;
+  box-shadow:
+    0 8px 20px rgba(165, 106, 207, 0.55),
+    0 2px 8px rgba(120, 81, 205, 0.8);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
+  box-shadow:
+    0 12px 28px rgba(165, 106, 207, 0.75),
+    0 3px 12px rgba(120, 81, 205, 0.9);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 2px 2px rgba(255 255 255 / 0.15));
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+  box-shadow: none;
+  background: rgba(143, 98, 196, 0.5);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0px);
+  box-shadow:
+    0 6px 15px rgba(165, 106, 207, 0.6),
+    0 1px 5px rgba(120, 81, 205, 0.7);
+}
+
+/* Button morph animation on success */
+@keyframes morphButton {
+  0% {
+    width: 100%;
+    border-radius: 32px;
+  }
+  50% {
+    width: 48px;
+    border-radius: 50%;
+  }
+  100% {
+    width: 100%;
+    border-radius: 32px;
+  }
+}
+
+/* Submit button morph active state */
+button.morphing {
+  animation: morphButton 1.15s ease forwards;
+  pointer-events: none;
+}
+
+/* Accessibility: Show focus outlines but only for keyboard users */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2.5px solid var(--color-primary-light);
+  outline-offset: 3px;
+  box-shadow: none;
+}

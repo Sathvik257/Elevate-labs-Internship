@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sathvik's Contact Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="blob-bg" aria-hidden="true"></div>
+  <section class="form-container" role="form" aria-labelledby="formTitle" aria-live="polite" aria-atomic="true">
+    <h1 id="formTitle">Contact Us</h1>
+    <form id="contactForm" novalidate aria-busy="false">
+      <div class="input-group">
+        <input type="text" id="name" name="name" placeholder=" " autocomplete="name" aria-describedby="error-name" aria-required="true" />
+        <label for="name">Full Name</label>
+        <div id="error-name" class="error-message" role="alert" aria-live="polite"></div>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder=" " autocomplete="email" aria-describedby="error-email" aria-required="true" />
+        <label for="email">Email Address</label>
+        <div id="error-email" class="error-message" role="alert" aria-live="polite"></div>
+      </div>
+
+      <div class="input-group">
+        <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" aria-describedby="error-phone" aria-required="false" />
+        <label for="phone">Phone Number (Optional)</label>
+        <div id="error-phone" class="error-message" role="alert" aria-live="polite"></div>
+      </div>
+
+      <div class="input-group">
+        <textarea id="message" name="message" placeholder=" " rows="4" aria-describedby="error-message" aria-required="true"></textarea>
+        <label for="message">Your Message</label>
+        <div id="error-message" class="error-message" role="alert" aria-live="polite"></div>
+      </div>
+
+      <button type="submit" aria-label="Send message">Send</button>
+    </form>
+
+    <div class="success-message" id="successMessage" role="alert" aria-live="assertive" aria-atomic="true">
+      <svg viewBox="0 0 24 24" >
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      Message sent successfully!
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
